@@ -1,0 +1,329 @@
+/* --------------------- header --------------------- */
+header {display: none;}
+/* --------------------- main --------------------- */
+main {
+    background-color: #f8f4f1;
+    text-align: center;
+}
+/* ------------- section01 - main -------------- */
+.main {
+    // display: none;
+}
+/* ------------- section02 - reservation -------------- */
+.reservation {
+    // display: none;
+    position: relative;
+    // border: 1px solid blue;
+}
+
+/* ------------- popup -------------- */
+.popup {
+    background-color: #f2f3f2;
+    border:1px solid #bebfbf;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    color: #595859;
+    width:500px;
+
+    
+
+    &__header {
+        // background-color: lightyellow;
+        padding: 30px;
+        > h4 {
+            font-size: 30px;
+            color: #f2b5a6;
+        }
+    
+        > b {
+            font-size: 14px;
+            margin-top: 10px;
+
+        }
+        
+        > p {
+            font-size: 12px;
+            margin-top: 20px;
+        }
+    }
+    &__form-wrap {
+        border-top: 1px solid #fff;
+    }
+
+    &__form {
+        // background-color: darkseagreen;
+        padding: 20px 30px;
+        text-align: left;
+    }
+
+    &__personal {}
+    &__input {
+        width: 100%;
+        display: flex;
+        label {
+            width: 30%;
+        }
+        input {
+            border: none;
+            width: 70%;
+            padding: 5px 10px;
+        }
+
+        & + & {
+            margin-top: 10px;
+        }
+    }
+    
+    &__color-select {
+        margin-top: 20px;
+        width: 100%;
+        
+    }
+
+    &__color-list {
+        margin-top: 10px;
+        width: 100%;
+        display: flex;
+        text-align: center;
+    }
+
+    &__color-btn {
+        border: 1px solid #d8d9da;
+        background-color: #eee8e3;
+        width: 33.333333%;
+        line-height: 35px;
+        margin: 0 5px;
+        border-radius: 7px;
+    }
+
+    &__submit-btn {
+        width: 100%;
+        display: block;
+        line-height: 70px;
+        background-color: #f6cbc0;
+        color: #fff;
+        cursor: pointer;
+        // cursor: pointer;
+    }
+
+    &__agree {
+        margin-top: 20px;
+
+        &-notice {
+            margin-top: 30px;
+            font-size: 12px;
+            // padding-left: 10px;
+            li {
+                padding-left: 15px;
+            }
+        }
+    }
+
+    &__ck-box {
+        & + & {
+            margin-top: 10px;
+        }
+
+        > input {
+            display: none;
+        }
+
+        > input + label {
+        }
+
+        > input + label {
+            padding-left: 30px;
+            position: relative;
+
+            &::before {
+                content: '';
+                width: 20px;
+                height: 20px;
+                display: block;
+                position: absolute;
+                background-color: #fff;
+                top: 3px;
+                left: 0;
+            }
+            span {
+                // display: block;
+                font-size: 13px;
+            }
+        }
+
+        > input:checked + label {
+            color: red;
+        }
+
+    }
+
+}
+/* ------------- success -------------- */
+.success-popup {
+    display: none;
+    &__msg {}
+    &__notice {}
+}
+
+/* ------------- section03 - benefit -------------- */
+.benefit {
+    &__inner {
+        padding: 70px 0;
+        width: 80%;
+        margin: 0 auto;
+    }
+
+    &__tit {
+        font-size: 40px;
+    }
+    &__sub-tit {
+        color: #9a8476;
+    }
+}
+
+
+.gift {
+    $this:&;
+
+    // background-color: lightsteelblue;
+
+    &__list {
+        // border: 1px solid red;
+        margin-top: 70px;
+        display: flex;
+        text-align: left;
+        
+    }
+
+    .top {
+        .point {
+            color: #828d6d;
+        }
+
+
+
+        #{$this}__txt {
+            
+            
+            .point {
+                color: #828d6d;
+            }
+        }
+
+        #{$this}__img {
+            background-color: #bec3ac;
+        }
+
+
+        #{$this}__product {
+            li {
+                b {
+                    display: block;
+                }
+            }
+
+            li + li {
+                // border: 1px solid red;
+                margin-top: 10px;
+                
+            }
+
+            &::before {
+                background-color: #828d6d;
+            }
+
+        }
+        
+    }
+
+
+    .bottom {
+        flex-direction: row-reverse;
+
+        #{$this}__txt {
+            .point {
+                color: #cf8b88;
+            }
+        }
+
+
+        #{$this}__img {
+            background-color: #d6caba;
+
+            .point {
+                color: #cf8b88;
+            }
+        }
+
+        #{$this}__product {
+            li + li {
+                margin-top: 7px;
+            }
+
+            &::before {
+                background-color: #cf8b88;
+            }
+        }
+    }
+
+    &__box {
+        width: 50%;
+    }
+
+    &__img {
+        // border: 1px solid lime;
+        img {}
+    }
+
+    &__txt {
+        padding: 20px 0 20px 30px;
+
+        > p {
+            
+        }
+
+        > b {
+            font-size: 25px;
+        }
+    }
+
+    &__product {
+        margin-top: 35px;
+        position: relative;
+        // border: 1px solid blue;
+
+        &::before {
+            content: '';
+            width: 50px;
+            height: 2px;
+            background-color: darkorange;
+            display: block;
+            position: absolute;
+            top: -20px;
+            left: 0;
+            transform: translateY(50%);
+        }
+
+        > li {
+            > b {}
+        }
+    }
+}
+/* --------------------- footer --------------------- */
+.footer {
+    background-color: #ebe4da;
+    color: #887d79;
+
+    &__inner {
+        padding: 20px 30px;
+    }
+}
+
+.notice-box {
+    display: flex;
+    div {
+        padding-left: 30px;
+    }
+}

@@ -1,0 +1,10 @@
+.section {
+    &__inner {
+        height:100vh;
+        overflow: hidden;
+    }
+}
+
+.section:nth-child(odd) {
+    // background-color:lightsteelblue
+}
