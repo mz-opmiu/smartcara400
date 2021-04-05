@@ -1,5 +1,9 @@
+@import '_mixins.scss';
+
 /* --------------------- header --------------------- */
-header {display: none;}
+header {
+}
+
 /* --------------------- main --------------------- */
 main {
     background-color: #f8f4f1;
@@ -8,12 +12,95 @@ main {
 /* ------------- section01 - main -------------- */
 .main {
     // display: none;
+    &__inner {
+        // height: 100vh;
+        padding: 0;
+    }
+
+    &__visual {
+        img {
+            width: 100%;
+        }
+    }
 }
+
+
 /* ------------- section02 - reservation -------------- */
 .reservation {
-    // display: none;
     position: relative;
-    // border: 1px solid blue;
+    background-color: #f3d0ca;
+
+    &__inner {
+        h2 {}
+        > p {}
+    }
+
+    &__tabs { 
+        margin-top: 20px;
+    }
+    &__tab-list {
+        border: 1px solid lime;
+        display: flex;
+    }
+
+    &__tab-btn {
+        background-color: blanchedalmond;
+        width: 33.333333%;
+        border: 1px solid #000;
+        padding: 10px 20px;
+        cursor: pointer;
+
+
+
+        &.active {
+            > .beige {
+                @include colorSelect('beige');
+            }
+    
+            > .green {
+    
+                @include colorSelect('green');
+            }
+    
+            > .pink {
+    
+                @include colorSelect('pink');
+            }
+
+        }
+
+
+        button {
+            pointer-events: none;
+            cursor: pointer;
+        }
+    }
+
+
+    &__content {
+        margin-top: 50px;
+
+        &-desc {
+            border: 1px solid blue;
+            display: none;
+            &.active {
+                display: block;
+            }
+        }
+
+
+    }
+
+    
+    &__submit-btn {
+        border: 1px solid #000;
+        margin-top: 20px;
+        padding: 20px;
+        span {
+            pointer-events: none;
+        }
+    }
+
 }
 
 /* ------------- popup -------------- */
@@ -26,6 +113,10 @@ main {
     transform: translate(-50%,-50%);
     color: #595859;
     width:500px;
+    z-index: 100;
+    -webkit-animation: pageUp .5s ease-out both;
+    animation: pageUp .7s ease-out both;
+    // display: none;
 
     
 
@@ -48,6 +139,7 @@ main {
             margin-top: 20px;
         }
     }
+
     &__form-wrap {
         border-top: 1px solid #fff;
     }
@@ -90,12 +182,16 @@ main {
     }
 
     &__color-btn {
-        border: 1px solid #d8d9da;
-        background-color: #eee8e3;
+        
         width: 33.333333%;
         line-height: 35px;
         margin: 0 5px;
         border-radius: 7px;
+
+        &.active {
+            border: 1px solid #d8d9da;
+            background-color: #eee8e3;
+        }
     }
 
     &__submit-btn {
@@ -160,6 +256,33 @@ main {
     }
 
 }
+
+
+@-webkit-keyframes pageUp {
+    0%{
+        top: 100px;
+        // opacity: 0;
+      }
+
+      100%{
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        // opacity: 1;
+      }
+}
+
+.dimmed {
+    background-color: #ffffffba;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+}
+
+
 /* ------------- success -------------- */
 .success-popup {
     display: none;
@@ -170,9 +293,7 @@ main {
 /* ------------- section03 - benefit -------------- */
 .benefit {
     &__inner {
-        padding: 70px 0;
-        width: 80%;
-        margin: 0 auto;
+        // padding: 70px 0;
     }
 
     &__tit {
@@ -311,6 +432,7 @@ main {
         }
     }
 }
+
 /* --------------------- footer --------------------- */
 .footer {
     background-color: #ebe4da;

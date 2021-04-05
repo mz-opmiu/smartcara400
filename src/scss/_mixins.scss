@@ -1,0 +1,10 @@
+@mixin colorSelect($colorName) {
+    // color : $colorName
+    @if $colorName == 'beige' {
+        color: #be8e4c;
+    } @else if $colorName == 'green' {
+        color:  #a3b374;
+    } @else if $colorName == 'pink' {
+        color:  #e39186;
+    } 
+}

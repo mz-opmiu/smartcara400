@@ -5,17 +5,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>smartcara 사전예약 프로모션</title>
-    <link rel="stylesheet" href="./src/css/style.min.css">
     <link rel="stylesheet" href="./src/css/common.min.css">
     <link rel="stylesheet" href="./src/css/reset.min.css">
+    <link rel="stylesheet" href="./src/css/style.min.css">
+
 </head>
 <body>
     <div class="wrap">
         <!-- 🥑 헤더  -->
         <header>
-            <div class="header__inner">
+            <div class="header__inner a11y">
+                <span>색다른 편리함</span>
                 <h1>스마트카라 사전 예약</h1>
-                <!-- <span>21. 04. 15 - 04. 30</span> -->
+                <p>2021. 04. 15 - 04. 30</p>
             </div>
         </header>
         <!-- 🍇 메인 -->
@@ -25,38 +27,42 @@
                 <div class="main__inner section__inner">
                     <!-- 비쥬얼 -->
                     <div class="main__visual">
-                        <video src="./src/img/top_test2.mp4" width="100%" height="100%" loop autoplay></video>
+                        <img src="./src/img/top_test.gif" alt="">
+                        <!-- <video src="./src/img/top_test2.mp4" width="100%" height="100%" loop autoplay></video> -->
                     </div>
                 </div>
             </section>
             <!-- 🍏 사전 예약 참여 페이지 -->
             <section class="reservation section">
                 <div class="reservation__inner section__inner">
-                    <p>내 주방에 어울리는 컬러를 선택해보세요</p>
                     <h2>스마트카라</h2>
+                    <p>내 주방에 어울리는 <b>컬러</b>를 선택해보세요</p>
                     <!-- 사전 예약 메뉴 탭 -->
                     <div class="reservation__tabs">
                         <ul class="reservation__tab-list">
-                            <li class="reservation__tab-btn beige">
-                                <button>
-                                    <b>크림 베이지</b>
+                            <li class="reservation__tab-btn active">
+                                <button class="beige">
+                                    01 크림 베이지
+                                    <!-- <span>01 크림 베이지</span> -->
                                 </button>
                             </li>
-                            <li class="reservation__tab-btn green">
-                                <button>
-                                    <b>네이처 그린</b>
+                            <li class="reservation__tab-btn">
+                                <button class="green">
+                                    02 네이처 그린
+                                    <!-- <span>02 네이처 그린</span> -->
                                 </button>
                             </li>
-                            <li class="reservation__tab-btn pink">
-                                <button>
-                                    <b>크림 베이지</b>
+                            <li class="reservation__tab-btn">
+                                <button class="pink">
+                                    03 스윗 핑크
+                                    <!-- <span>03 크림 베이지</span> -->
                                 </button>
                             </li>
                         </ul>
                     </div>
                     <!-- 사전 컨텐츠 -->
                     <div class="reservation__content">
-                        <div class="reservation__content-desc">
+                        <div class="reservation__content-desc active">
                             <p>보이지 않는 부분까지 깔끔하게</p>
                             <strong>스마트카라 <img src="" alt="스마트카라 MY COLOR FIT">크림베이지</strong>
                             <p>
@@ -99,7 +105,9 @@
                             </p>
                         </div>
                     </div>
-                    <button class="reservation__submit-btn">지금 사전예약 하기<i class="subm-btn-i"></i></button>
+                    <button class="reservation__submit-btn">
+                        <span>지금 사전예약 하기</span>
+                    </button>
                 </div>
                 <!-- 사전예약 개인정보 팝업창 -->
                 <div class="popup reservation-popup">
@@ -160,9 +168,9 @@
                             </div>
                         </form>
                     </div>
-                    
                     <button class="popup__submit-btn">사전예약 신청 완료</button>
                 </div>
+                <div class="dimmed"></div>
                 <!-- 신청 완료 -->
                 <div class="success-popup">
                     <p class="success-popup__msg">신청이 완료되었습니다.</p>
@@ -269,5 +277,6 @@
             </div>
         </footer>
     </div>
+    <script src="./src/js/main.js"></script>
 </body>
 </html>

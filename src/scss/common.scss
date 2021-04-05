@@ -2,9 +2,21 @@
     &__inner {
         height:100vh;
         overflow: hidden;
+        padding: 70px 30px;
     }
 }
 
 .section:nth-child(odd) {
     // background-color:lightsteelblue
 }
+
+.a11y {
+    position:absolute;
+    top: auto;
+    left: -9999em;
+    overflow: hidden;
+    width: 1px;
+    height: 1px;
+    clip:rect(0 0 0 0);
+}
+
