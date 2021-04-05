@@ -107,16 +107,17 @@ main {
 .popup {
     background-color: #f2f3f2;
     border:1px solid #bebfbf;
-    position: absolute;
+    position: fixed;
+    // top: 0;
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
     color: #595859;
     width:500px;
     z-index: 100;
-    -webkit-animation: pageUp .5s ease-out both;
-    animation: pageUp .7s ease-out both;
-    // display: none;
+    // -webkit-animation: pageUp .5s ease-out both;
+    // animation: pageUp .7s ease-out both;
+    display: none;
 
     
 

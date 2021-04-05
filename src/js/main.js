@@ -10,7 +10,6 @@ const popupArea = document.querySelector('.reservation-popup'),
     dimmed = document.querySelector('.dimmed');
 
 
-
 let targetColor = 'beige'; // 초기 컬러 베이지로 초기화
 
 function init() {
@@ -18,8 +17,6 @@ function init() {
     tabBtns.forEach((btn,idx) => {
         btn.addEventListener('click',function (ev) {
             targetColor = ev.target.querySelector('button').className;
-
-            // console.log('타켓 컬러는???????',targetColor);
 
             removeClassName();
 
@@ -31,8 +28,6 @@ function init() {
 
 }
 
-// let status = true;
-
 popupEvent();
 
 function popupEvent() {
@@ -40,69 +35,38 @@ function popupEvent() {
     tabSubmitBtn.addEventListener('click', function(ev) {
         console.log('클릭');
         popupArea.style.display = 'block';
-        popupArea.classList.add('active');
         dimmed.style.display = 'block';
 
         submitReserv(); 
-        // status = !status;
 
     });
 
-    window.addEventListener('click', function(ev) {
-        console.log('window ev target ===>',ev.target);
-        console.log('hihihi');
 
-        
-            console.log('a');
-            if( !checkInBox(ev.target,popupArea) ) {
-                popupArea.style.display = 'none';
-                popupArea.classList.remove('active');
-                dimmed.style.display = 'none';
-
-                // console.log('닫자');
-            } 
-
-            function checkInBox(clickTarget,listBox) {
-                // console.log('clickTarget 🐸',clickTarget.tagName);
-                // console.log('clickTarget 🦁',listBox.tagName);
-                console.log('clickTraget className ===>',clickTarget.className);
-                console.log('clickTarget',clickTarget);
-                console.log('listBox',listBox);
-                console.log('같은지?????', clickTarget === listBox);
-            
-            
-                    while ( clickTarget.tagName !== 'HTML' ) {
-                        if( clickTarget === listBox ) {
-                            return true
-                        } 
-            
-                        clickTarget  = clickTarget.parentNode;
-                    }
-            
-                    return false
-            }
-    
-        
+    dimmed.addEventListener('click', function() {
+        dimmed.style.display = 'none';
+        popupArea.style.display = 'none';
     })
-
-
-    
-
 
 }
 
 
 // 사전예약폼에 있는 컬러 버튼
 function submitReserv() {
-    console.log('🎈',targetColor);
-
     popupColorBtns.forEach((btn,idx) => {
         if( btn.classList.contains(targetColor) ) {
-            console.log('📌',btn);
+            removeColorBtnCn();
             btn.classList.add('active')
         }
     })
 }
+
+function removeColorBtnCn() {
+    popupColorBtns.forEach(btn => {
+        btn.classList.remove('active')
+    })
+}
+
+
 
 // 전체 클래스명 지우기
 function removeClassName() {

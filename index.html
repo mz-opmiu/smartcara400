@@ -109,78 +109,6 @@
                         <span>지금 사전예약 하기</span>
                     </button>
                 </div>
-                <!-- 사전예약 개인정보 팝업창 -->
-                <div class="popup reservation-popup">
-                    <div class="popup__header">
-                        <h4>클린 인테리어 가전</h4>
-                        <b>스마트카라 MY COLOR FIT 사전예약</b>
-                        <p>입력해주시는 개인정보는 <br> 이벤트 참여 확인과 경품 제공을 위한 용도로 활용됩니다.</p>
-                    </div>
-                    <div class="popup__form-wrap">
-                        <form class="popup__form" action="">
-                            <div class="popup__personal">
-                                <div class="popup__input">
-                                    <label for="name">
-                                        *이름
-                                    </label>
-                                    <input id="name" type="text">
-                                </div>
-                                <div class="popup__input">
-                                    <label for="phone">
-                                        *휴대폰 번호
-                                    </label>
-                                    <input id="phone" type="text">
-                                </div>
-                            </div>
-                            <div class="popup__color-select">
-                                <span>
-                                    *담을 색상
-                                </span>
-                                <ul class="popup__color-list">
-                                    <li class="popup__color-btn beige">
-                                        <button>#크림베이지</button>
-                                    </li>
-                                    <li class="popup__color-btn green">
-                                        <button>#네이처그린</button>
-                                    </li>
-                                    <li class="popup__color-btn pink">
-                                        <button>#스윗 핑크</button>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="popup__agree">
-                                <div class="popup__ck-box">
-                                    <input id="sms" type="checkbox">
-                                    <label for="sms">
-                                        <span>SMS 수신여부 동의</span>
-                                    </label>
-                                </div>
-                                <div class="popup__ck-box">
-                                    <input id="personal-info" type="checkbox">
-                                    <label for="personal-info">
-                                        <span>개인 정보 수집 및 이용과 위탁 동의</span>
-                                    </label>
-                                </div>
-                                <ul class="popup__agree-notice">
-                                    <li>- *표기된 값은 필수 입력 값입니다.</li>
-                                    <li>- 정보를 제대로 입력 하셨는지 다시 한 번 확인 해주세요.</li>
-                                </ul>
-                            </div>
-                        </form>
-                    </div>
-                    <button class="popup__submit-btn">사전예약 신청 완료</button>
-                </div>
-                <div class="dimmed"></div>
-                <!-- 신청 완료 -->
-                <div class="success-popup">
-                    <p class="success-popup__msg">신청이 완료되었습니다.</p>
-                    <ul class="success-popup__notice">
-                        <li>사전예약 신청 후 구매 기간과 혜택이 문자로 발송됩니다.</li>
-                        <li>사전예약 신청 고객 전용 구매링크는 제품 런칭 이후(2021년 5월 3일 예정) MMS로 일괄 발송 예정입니다.</li>
-                    </ul>
-                    <button class="success-popup__event-btn share-btn">이벤트 공유하기 <i class="success-popup__event-icon"></i></button>
-                    <button class="success-popup__event-btn copy-btn">이벤트 링크 복사하기 <i class="success-popup__event-icon"></i></button>
-                </div>
             </section>
             <!-- 🍑 혜택 안내 -->
             <section class="benefit section">
@@ -231,6 +159,78 @@
                 </div>
             </section> 
         </main>
+        <!-- 사전예약 개인정보 팝업창 -->
+        <div class="popup reservation-popup">
+            <div class="popup__header">
+                <h4>클린 인테리어 가전</h4>
+                <b>스마트카라 MY COLOR FIT 사전예약</b>
+                <p>입력해주시는 개인정보는 <br> 이벤트 참여 확인과 경품 제공을 위한 용도로 활용됩니다.</p>
+            </div>
+            <div class="popup__form-wrap">
+                <form class="popup__form" action="">
+                    <div class="popup__personal">
+                        <div class="popup__input">
+                            <label for="name">
+                                *이름
+                            </label>
+                            <input id="name" type="text">
+                        </div>
+                        <div class="popup__input">
+                            <label for="phone">
+                                *휴대폰 번호
+                            </label>
+                            <input id="phone" type="text">
+                        </div>
+                    </div>
+                    <div class="popup__color-select">
+                        <span>
+                            *담을 색상
+                        </span>
+                        <ul class="popup__color-list">
+                            <li class="popup__color-btn beige">
+                                <button>#크림베이지</button>
+                            </li>
+                            <li class="popup__color-btn green">
+                                <button>#네이처그린</button>
+                            </li>
+                            <li class="popup__color-btn pink">
+                                <button>#스윗 핑크</button>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="popup__agree">
+                        <div class="popup__ck-box">
+                            <input id="sms" type="checkbox">
+                            <label for="sms">
+                                <span>SMS 수신여부 동의</span>
+                            </label>
+                        </div>
+                        <div class="popup__ck-box">
+                            <input id="personal-info" type="checkbox">
+                            <label for="personal-info">
+                                <span>개인 정보 수집 및 이용과 위탁 동의</span>
+                            </label>
+                        </div>
+                        <ul class="popup__agree-notice">
+                            <li>- *표기된 값은 필수 입력 값입니다.</li>
+                            <li>- 정보를 제대로 입력 하셨는지 다시 한 번 확인 해주세요.</li>
+                        </ul>
+                    </div>
+                </form>
+            </div>
+            <button class="popup__submit-btn">사전예약 신청 완료</button>
+        </div>
+        <div class="dimmed"></div>
+        <!-- 신청 완료 -->
+        <div class="success-popup">
+            <p class="success-popup__msg">신청이 완료되었습니다.</p>
+            <ul class="success-popup__notice">
+                <li>사전예약 신청 후 구매 기간과 혜택이 문자로 발송됩니다.</li>
+                <li>사전예약 신청 고객 전용 구매링크는 제품 런칭 이후(2021년 5월 3일 예정) MMS로 일괄 발송 예정입니다.</li>
+            </ul>
+            <button class="success-popup__event-btn share-btn">이벤트 공유하기 <i class="success-popup__event-icon"></i></button>
+            <button class="success-popup__event-btn copy-btn">이벤트 링크 복사하기 <i class="success-popup__event-icon"></i></button>
+        </div>
         <!-- 🧀 footer 유의사항 -->
         <footer class="footer">
             <div class="footer__inner"> 
