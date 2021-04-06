@@ -1,5 +1,7 @@
 @import '_mixins.scss';
-
+.wrap {
+    position: relative;
+}
 /* --------------------- header --------------------- */
 header {
 }
@@ -28,43 +30,70 @@ main {
 /* ------------- section02 - reservation -------------- */
 .reservation {
     position: relative;
-    background-color: #f3d0ca;
+    background-color: #f2d0ca;
 
     &__inner {
-        h2 {}
-        > p {}
+        >img {
+            width: 604px;
+            height: 107px
+        }
     }
 
     &__tabs { 
-        margin-top: 20px;
+        margin-top: 58px;
+        
     }
+
     &__tab-list {
-        border: 1px solid lime;
         display: flex;
+        border: 1px solid #756865;
+        
     }
 
     &__tab-btn {
-        background-color: blanchedalmond;
         width: 33.333333%;
-        border: 1px solid #000;
-        padding: 10px 20px;
         cursor: pointer;
+        
 
+        & + & {
+            border-left:1px solid #756865;
+        }
 
+        > button {
+            width: 100%;
+            height: 58px;
+            background:no-repeat 50% 50%;
+        }
+
+        > .beige {
+            @include colorTabs('beige');
+        }
+
+        > .green {
+            @include colorTabs('green');
+        }
+
+        > .pink {
+            @include colorTabs('pink');
+        }
+        
 
         &.active {
+            > button {
+                background-color: #f6e2d9;
+            }
+
             > .beige {
-                @include colorSelect('beige');
+                @include colorActive('beige');
             }
     
             > .green {
-    
-                @include colorSelect('green');
+                @include colorActive('green');
             }
     
             > .pink {
     
-                @include colorSelect('pink');
+                @include colorActive('pink');
             }
 
         }
@@ -78,10 +107,16 @@ main {
 
 
     &__content {
-        margin-top: 50px;
+        margin-top: 40px;
+
 
         &-desc {
-            border: 1px solid blue;
+            > img {
+                width: 100%;
+                // height: 100%;
+            }
+
+            // border: 1px solid blue;
             display: none;
             &.active {
                 display: block;
@@ -93,134 +128,106 @@ main {
 
     
     &__submit-btn {
-        border: 1px solid #000;
-        margin-top: 20px;
-        padding: 20px;
-        span {
-            pointer-events: none;
-        }
+        margin-top: 40px;
+        // border: 1px solid red;
+        width: 350px;
+        height: 70px;
+        background: url(../img/reserv_submit_btn.png) no-repeat 0 0;
+        background-size:contain;
     }
 
 }
 
 /* ------------- popup -------------- */
 .popup {
-    background-color: #f2f3f2;
-    border:1px solid #bebfbf;
-    position: fixed;
-    // top: 0;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-    color: #595859;
-    width:500px;
-    z-index: 100;
-    // -webkit-animation: pageUp .5s ease-out both;
-    // animation: pageUp .7s ease-out both;
+    position: absolute;
+    top: 0;
+    padding-top: 1000px;
+    left:0;
+    width: 100%;
+    height: 100%;
+    background-color: #00000073;
     display: none;
 
-    
+    &__inner {
+        width:580px;
+        z-index: 100;
+        margin: 30px auto 0;
+        position: relative;
+        background-color: #f9f1e6;
+    }
 
-    &__header {
-        // background-color: lightyellow;
-        padding: 30px;
-        > h4 {
-            font-size: 30px;
-            color: #f2b5a6;
-        }
-    
-        > b {
-            font-size: 14px;
-            margin-top: 10px;
 
-        }
-        
-        > p {
-            font-size: 12px;
-            margin-top: 20px;
+    &__form {
+        color: #68594a;
+        font-weight: bold;
+
+        &-inner {
+           padding:0 45px 59px;
+           position: relative; 
+           
+
+           > p {
+               padding: 32px 0 19px;
+               color: #756759;
+               text-align: center;
+               font-size: 18px;
+           }
         }
     }
 
-    &__form-wrap {
+    &__personal {
+        padding: 34px 0;
         border-top: 1px solid #fff;
     }
 
-    &__form {
-        // background-color: darkseagreen;
-        padding: 20px 30px;
-        text-align: left;
-    }
-
-    &__personal {}
-    &__input {
-        width: 100%;
+    &__form-item {
         display: flex;
+
         label {
-            width: 30%;
+            line-height: 59px;
+            width: 113px;
+            font-size: 20px;
         }
+
         input {
             border: none;
-            width: 70%;
-            padding: 5px 10px;
+            width: 376px;
+            height: 59px;
+            padding: 0 13px;
+            font-size: 18px;
+
+            &::placeholder {
+                color: #d6d6d6;
+            }
         }
 
         & + & {
-            margin-top: 10px;
+            margin-top:19px;
         }
     }
     
     &__color-select {
-        margin-top: 20px;
-        width: 100%;
-        
+        margin-top: 34px;
+        font-size: 20px;
     }
 
     &__color-list {
-        margin-top: 10px;
-        width: 100%;
-        display: flex;
-        text-align: center;
-    }
-
-    &__color-btn {
-        
-        width: 33.333333%;
-        line-height: 35px;
-        margin: 0 5px;
-        border-radius: 7px;
-
-        &.active {
-            border: 1px solid #d8d9da;
-            background-color: #eee8e3;
-        }
-    }
-
-    &__submit-btn {
-        width: 100%;
-        display: block;
-        line-height: 70px;
-        background-color: #f6cbc0;
-        color: #fff;
-        cursor: pointer;
-        // cursor: pointer;
-    }
-
-    &__agree {
         margin-top: 20px;
-
-        &-notice {
-            margin-top: 30px;
-            font-size: 12px;
-            // padding-left: 10px;
-            li {
-                padding-left: 15px;
-            }
-        }
+        padding-left: 5px;
+        display: flex;
     }
 
-    &__ck-box {
+    &__color {
+        width: 33.333333%;
+        text-align: center;
+        line-height: 47px;
+        cursor: pointer;
+        
+        
+
         & + & {
-            margin-top: 10px;
+            margin-left: 11px;
         }
 
         > input {
@@ -228,30 +235,133 @@ main {
         }
 
         > input + label {
+            cursor: pointer;
+            display: block;
+            color: #777777;
+            border: 1px solid #a1a1a0;
+            background-color: #fff;
+            border-radius: 30px;
+        }
+
+        > input:checked + label {
+            color: #fff;
+            border: unset;
+
+            &[for="green"] {
+                background-color:#a2ae7e;
+            }
+
+            &[for="pink"] {
+                background-color:#dc968d;
+            }
+
+            &[for="beige"] {
+                background-color: #c3ab92;
+                
+
+            }
+        }
+    }
+
+
+    &__submit-btn {
+        width: 100%;
+        height: 90px;
+        display: block;
+        cursor: pointer;
+        background-color: #6b7f61;
+        color: #fff;
+        font-size: 28px;
+    }
+
+    &__close-btn {
+        position: absolute;
+        width: 30px;
+        height: 30px;
+        top: 17px;
+        right: 18px;
+    }
+
+
+    &__agree {
+        padding-top: 36px;
+        border-top: 1px solid #fff;
+    }
+
+    &__notice {
+        margin-top: 38px;
+        color: #c8c2ba;
+
+        li {
+            position: relative;
+            &:last-child {
+                margin-top: 14px;
+            }
+
+            font-size: 16px;
+            padding-left: 10px;
+
+            
+            &::before {
+                content: '';
+                width: 4px;
+                height: 4px;
+                position: absolute;
+                top:50%;
+                left: 0;
+                transform: translateY(-50%);
+                background: url(../img/popup_ellipse.png) no-repeat 0 0;
+                // border: 1px solid blue;
+            }
+        }
+    }
+
+    &__ck-box {
+        & + & {
+            margin-top: 20px;
+        }
+
+        > input {
+            display: none;
         }
 
         > input + label {
-            padding-left: 30px;
+            padding-left: 32px;
             position: relative;
+            cursor: pointer;
+
+            > .ck-icon {
+                width: 24px;
+                height: 25px;
+                position: absolute;
+                left: 0;
+                top: 0;
+                background: url(../img/agree_ck.png) no-repeat 50% 50%;
+                display: none;
+
+            }
 
             &::before {
                 content: '';
-                width: 20px;
-                height: 20px;
+                width: 24px;
+                height: 25px;
                 display: block;
                 position: absolute;
                 background-color: #fff;
-                top: 3px;
+                top:0;
                 left: 0;
             }
+
             span {
-                // display: block;
-                font-size: 13px;
+                color: #83807c;
+                font-size: 20px;
             }
         }
 
         > input:checked + label {
-            color: red;
+            > .ck-icon {
+                display: block;
+            }
         }
 
     }
@@ -272,17 +382,6 @@ main {
         // opacity: 1;
       }
 }
-
-.dimmed {
-    background-color: #ffffffba;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: none;
-}
-
 
 /* ------------- success -------------- */
 .success-popup {

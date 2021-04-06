@@ -1,14 +1,16 @@
 .section {
     &__inner {
-        height:100vh;
+        // height:100vh;
         overflow: hidden;
-        padding: 70px 30px;
+        padding: 120px 50px;
     }
 }
 
 .section:nth-child(odd) {
     // background-color:lightsteelblue
 }
+
+.popup {}
 
 .a11y {
     position:absolute;

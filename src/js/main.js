@@ -7,7 +7,7 @@ const tabBtns = document.querySelectorAll('.reservation__tab-btn'),
 const popupArea = document.querySelector('.reservation-popup'),
     popupColorBtnBox = document.querySelector('.popup__color-list'),
     popupColorBtns = popupArea.querySelectorAll('.popup__color-btn'),
-    dimmed = document.querySelector('.dimmed');
+    popupCloseBtn = popupArea.querySelector('.popup__close-btn');
 
 
 let targetColor = 'beige'; // 초기 컬러 베이지로 초기화
@@ -33,20 +33,17 @@ popupEvent();
 function popupEvent() {
     // 사전예약하기 버튼 
     tabSubmitBtn.addEventListener('click', function(ev) {
-        console.log('클릭');
         popupArea.style.display = 'block';
-        dimmed.style.display = 'block';
 
         submitReserv(); 
 
     });
 
 
-    dimmed.addEventListener('click', function() {
-        dimmed.style.display = 'none';
+    popupCloseBtn.addEventListener('click',function (ev) {
+        console.log(ev.target);
         popupArea.style.display = 'none';
     })
-
 }
 
 
