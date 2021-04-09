@@ -179,7 +179,7 @@ main {
     height: 100%;
     background-color: rgba(0,0,0,0.7);
     padding-top: 100px;
-    display: none;
+    // display: none;
 
     &__inner {
         position: absolute;
@@ -653,7 +653,6 @@ main {
     }
 
     &__inner {
-        // border: 1px solid red;
         position: fixed;
         background-color: rgba(0,0,0,0.7);
         width:960px;
@@ -664,8 +663,6 @@ main {
 
     &__img {
         display: none;
-        // background-color: #fff;
-        border: 1px solid lime;
 
         &.active {
             display:flex;

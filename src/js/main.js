@@ -20,16 +20,13 @@ var productViewitems = document.querySelectorAll('.product__view-item-img'),
 
 
 // form 
-var popupForm = html.querySelector('.popup__form'),
-    nameInput = popupForm.querySelector('input[id=name]'),
-    phoneInput = popupForm.querySelector('input[id=phone]');
+var popupForm = html.querySelector('.popup__form');
+    // nameInput = popupForm.querySelector('input[id=name]'),
+    // phoneInput = popupForm.querySelector('input[id=phone]');
 
 
 var targetColor = 'beige'; // 초기 컬러 베이지로 초기화
 
-// 팝업 위치 => 현재 로케이션 + 10 하기? or html 구조 다시 잡기
-
-//// 🐙 팝업 닫았을 경우 모든 인풋정보 리셋
 
 if (window.NodeList && !NodeList.prototype.forEach) {
     NodeList.prototype.forEach = Array.prototype.forEach;
@@ -40,11 +37,13 @@ function init() {
     // 사전예약 탭 메뉴
     tabBtns.forEach((btn,idx) => {
         btn.addEventListener('click',function (ev) {
-            
+
             removeClassName();
 
             tabContent[idx].classList.add('active');
             ev.target.classList.add('active');
+
+            console.log(ev.target);
             
 
             targetColorSetting ();
@@ -97,18 +96,38 @@ function init() {
         submitReserv();
     });
 
+    //// 🐙 팝업 닫았을 경우 모든 인풋정보 리셋
+    /*
+        1. 제출 양식 다 입력되었는지. -> 📌 이름, 휴대폰번호, 체크박스 체크 여부
+            만약 안되어있다면 에러처리!
 
+        2. js 로 api처리해보기
+        3. 성공하면 successpopup
+    */
     // 팝업 폼 제출 
     popupForm.addEventListener('submit', function(ev) {
-        ev.preventDefault()
-        // console.log(ev.target.value);
-        if( nameInput.value && phoneInput.value ) {
-            console.log(nameInput.value);
-            console.log(phoneInput.value);
-            console.log(targetColor);
+        ev.preventDefault();
+        var nameValue = popupForm.name.value;
+        var phoneValue = popupForm.phone.value;
+        var colorSelList = popupForm.colorSelect;
+        var smsCkBox = popupForm.sms.checked;
+        var persInfoCkBox = popupForm.personalInfo.checked;
+        var valid = nameValue && phoneValue && smsCkBox && persInfoCkBox;
+
+        if( valid ) {
+            console.log('제출');
+
+
+            colorSelList.forEach(btn => {
+                // console.log();
+                if ( btn.checked ) {
+                    console.log('체크된 버튼!!!🎁',btn.id);
+                }
+            })
 
         } else {
             console.log('입력이 안되어있습니다!');
+            // 에러 표시 이벤트
         }
     })
 
@@ -129,14 +148,15 @@ function submitReserv() {
     })
 }
 
+
 // 선택된 색상 셋팅해주는 함수
 function targetColorSetting() {
-    tabBtns.forEach((btn,index) => {
+    tabBtns.forEach(btn => {
         if(btn.classList.contains('active')) {
             targetColor = btn.querySelector('button').className;
-            
+            console.log(targetColor);
 
-            console.log('현재 타겟 컬러입니다~💟💟',targetColor);
+            
         }
     })
 }
