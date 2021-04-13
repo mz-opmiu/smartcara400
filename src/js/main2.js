@@ -24,11 +24,10 @@ var productViewitems = document.querySelectorAll('.product__view-item-img'),
 
 // form 
 var popupForm = html.querySelector('.popup__form'),
-    popupSubmitBtn = popupForm.querySelector('.popup__submit-btn'),
-    nameElm = popupForm.querySelector('input[id=name]'),
-    phoneElm = popupForm.querySelector('input[id=phone]'),
-    smsCkBox = popupForm.querySelector('input[id=sms]'),
-    persInfoCkBox = popupForm.querySelector('input[id=personalInfo]');
+    nameElm = popupForm.name,
+    phoneElm = popupForm.phone,
+    smsCkBox = popupForm.sms,
+    persInfoCkBox = popupForm.personalInfo;
 
 
 var targetColor = 'beige'; // 초기 컬러 베이지로 초기화
@@ -103,11 +102,10 @@ function init() {
         submitReserv();
     });
 
-
     // 팝업 폼 제출 
-    popupSubmitBtn.addEventListener('click', function(ev) {
+    popupForm.addEventListener('submit', function(ev) {
         ev.preventDefault();
-        var colorSelList = popupForm.querySelectorAll('input[name=colorSelect]');
+        var colorSelList = popupForm.colorSelect;
         var colorName;
 
         
