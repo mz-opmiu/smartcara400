@@ -136,32 +136,26 @@ function closePopup() {
 }
 
 
-async function fetchApi(body) {
-    var url = `http://localhost:8080/api/reservation2021`
-    var options = {
-        method : 'POST',
+function fetchApi(body) {
+    $.ajax({
+        type: "POST", 
+        url: "https://test-event-smartcara.pentacle.co.kr/api/reservation2021", 
+        data: body,              
+        dataType: "json",
         headers: {
             'Content-Type': 'application/json'
-        },  
-        body:JSON.stringify(body),
-        
-    }
+        },
+        success: function (){
+            closePopup();
+            setTimeout(function(){
+                successPopup.style.display = 'block'
+            }, 500);
 
-
-    var res = await fetch(url,options)
-    var data = await res.json();
-
-    if(res.ok) {
-        closePopup();
-        setTimeout(function(){
-            successPopup.style.display = 'block'
-        }, 500);
-        
-
-        return data
-    }else {
-        alert(data.error)
-    }
+        },
+        error : function(error) {
+            alert(JSON.parse(error.response).error)
+        }
+    })
 }
 
 // 사전예약폼에 있는 컬러 버튼
