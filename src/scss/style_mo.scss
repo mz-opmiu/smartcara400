@@ -1,5 +1,6 @@
+@import '_variables.scss';
 @import '_mixins_mo.scss';
-
+.root--mo {
 /* --------------------- common --------------------- */
 .section {
     // background-color: #fff5e9;
@@ -41,7 +42,7 @@ main {
 }
 /* ------------- section01 - main -------------- */
 .main {
-    background:url(../img/main_background.png) no-repeat 0 0;
+    background:url($imgSrc + 'main_background.png') no-repeat 0 0;
     background-size:cover;
     padding: 83px 0 98px;
     
@@ -180,350 +181,10 @@ main {
         margin-top: 40px;
         width: 500px;
         height: 80px;
-        background: url(../img/mo/mo_reserv_submit_btn.png) no-repeat 0 0;
+        background: url($imgSrc + 'mo/mo_reserv_submit_btn.png') no-repeat 0 0;
         background-size:contain;
     }
 
-}
-
-/* ------------- popup -------------- */
-.popup {
-    position: absolute;
-    top: 0;
-    left:0;
-    width: 100%;
-    height: 100%;
-    background-color: #00000073;
-    padding-top: 100px;
-    display: none;
-
-    &__inner {
-        position: absolute;
-        left: 50%;
-        transform: translateX(-50%);
-        width:580px;
-        background-color: #f9f1e6;
-        top: 5px;
-    }
-
-
-    &__form {
-        color: #68594a;
-        font-weight: bold;
-
-        &-inner {
-           padding:0 45px 59px;
-           position: relative; 
-           
-
-           > p {
-               padding: 32px 0 21px;
-               
-           }
-        }
-    }
-
-    &__personal {
-        padding: 34px 0;
-        border-top: 1px solid #fff;
-    }
-
-    &__form-item {
-        display: flex;
-
-        label {
-            line-height: 59px;
-            width: 113px;
-            font-size: 20px;
-        }
-
-        input {
-            border: none;
-            width: 376px;
-            height: 59px;
-            padding: 0 13px;
-            font-size: 18px;
-
-            &::placeholder {
-                color: #d6d6d6;
-            }
-        }
-
-        & + & {
-            margin-top:19px;
-        }
-    }
-    
-    &__color-select {
-        margin-top: 34px;
-        font-size: 20px;
-    }
-
-    &__color-list {
-        margin-top: 20px;
-        padding-left: 5px;
-        display: flex;
-    }
-
-    &__color {
-        width: 33.333333%;
-        text-align: center;
-        line-height: 47px;
-        cursor: pointer;
-        
-        
-
-        & + & {
-            margin-left: 11px;
-        }
-
-        > input {
-            display: none;
-        }
-
-        > input + label {
-            cursor: pointer;
-            display: block;
-            color: #777777;
-            border: 1px solid #a1a1a0;
-            background-color: #fff;
-            border-radius: 30px;
-        }
-
-        > input:checked + label {
-            color: #fff;
-            border: unset;
-
-            &[for="green"] {
-                background-color:#a2ae7e;
-            }
-
-            &[for="pink"] {
-                background-color:#dc968d;
-            }
-
-            &[for="beige"] {
-                background-color: #c3ab92;
-                
-
-            }
-        }
-    }
-
-
-    &__submit-btn {
-        width: 100%;
-        height: 90px;
-        display: block;
-        cursor: pointer;
-        background-color: #6b7f61;
-        color: #fff;
-        font-size: 28px;
-    }
-
-    &__close-btn {
-        position: absolute;
-        width: 30px;
-        height: 30px;
-        top: 17px;
-        right: 18px;
-    }
-
-
-    &__agree {
-        padding-top: 36px;
-        border-top: 1px solid #fff;
-    }
-
-    &__notice {
-        margin-top: 38px;
-        color: #444444;
-        font-weight: normal;
-
-        li {
-            position: relative;
-            &:last-child {
-                margin-top: 8px;
-            }
-
-            font-size: 16px;
-            padding-left: 10px;
-
-            
-            &::before {
-                content: '';
-                width: 4px;
-                height: 4px;
-                position: absolute;
-                top:50%;
-                left: 0;
-                transform: translateY(-50%);
-                background: url(../img/popup_ellipse.png) no-repeat 0 0;
-                // border: 1px solid blue;
-            }
-        }
-    }
-
-    &__pi-agree {
-        margin-top: 28px;
-        color: #85817d;
-        font-size: 14px;
-
-        &-txt {
-            margin-top: 12px;
-
-            background-color: #fff;
-            padding:12px 31px 5px 21px;
-            height: 130px;
-            overflow: scroll;
-
-
-            > b {
-                font-weight: bold;
-            }
-        }
-    }
-
-    &__ck-box {
-        & + & {
-            margin-top: 20px;
-        }
-
-        > input {
-            display: none;
-        }
-
-        > input + label {
-            padding-left: 32px;
-            position: relative;
-            cursor: pointer;
-
-            > .ck-icon {
-                width: 24px;
-                height: 25px;
-                position: absolute;
-                left: 0;
-                top: 0;
-                background: url(../img/agree_ck.png) no-repeat 50% 50%;
-                display: none;
-
-            }
-
-            &::before {
-                content: '';
-                width: 24px;
-                height: 25px;
-                display: block;
-                position: absolute;
-                background-color: #fff;
-                top:0;
-                left: 0;
-            }
-
-            span {
-                color: #565554;
-                font-size: 20px;
-            }
-        }
-
-        > input:checked + label {
-            > .ck-icon {
-                display: block;
-            }
-        }
-
-    }
-
-}
-
-
-@-webkit-keyframes pageUp {
-    0%{
-        top: 100px;
-        // opacity: 0;
-      }
-
-      100%{
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%,-50%);
-        // opacity: 1;
-      }
-}
-
-/* ------------- success -------------- */
-.success-popup {
-    display: none;
-    position:fixed;
-    top: 0;
-    left:0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0,0,0,0.7);
-   
-    &__inner {
-        position:absolute;
-        top:0;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 580px;
-        background-color: #f9f1e6;
-
-    }
-
-    &__msg {
-        padding: 38px 46px;
-        font-size: 19px;
-        color: #978b7f;
-
-        > li {
-            padding-left: 11px;
-            position: relative;
-            
-            &:nth-child(2) {
-                margin-top: 23px;
-                &::before {
-                    top:unset;
-                    bottom: 33px;
-                }
-
-            }
-            
-            // & + & {
-            //     margin-top: 23px;
-            // }
-
-            &::before {
-                content: '';
-                // background: url(../img/dot.png) no-repeat 0 0;
-                width: 4px;
-                height: 4px;
-                border-radius: 50px;
-                position: absolute;
-                left: 0;
-                top: 50%;
-                transform: translateY(-50%);
-                background-color: #978b7f;
-            }
-        }
-        
-    }
-
-    &__comp-btn {
-        width: 580px;
-        height: 90px;
-        background-color: #6b7f61;
-        font-size: 28px;
-        color: #fff;
-    } 
-
-    &__close-btn {
-        position: absolute;
-        width: 30px;
-        height: 30px;
-        top: 17px;
-        right: 18px;
-    }
 }
 
 /* ------------- section03 - benefit -------------- */
@@ -624,14 +285,14 @@ main {
         } 
 
         .share-btn {
-            background-image: url(../img/mo/mo_product_share_btn.png);
+            background-image: url($imgSrc + 'mo/mo_product_share_btn.png');
 
         }
 
 
         .reserv-btn {
             margin-top: 11px;
-            background-image: url(../img/mo/mo_product_now_reserv_btn.png);
+            background-image: url($imgSrc + 'mo/mo_product_now_reserv_btn.png');
         }
     }
 }
@@ -678,7 +339,7 @@ main {
         top: 20px;
         width: 30px;
         height: 30px;
-        background: url(../img/mo/popup_gallery_close_btn.png) no-repeat 0 0;
+        background: url($imgSrc + 'mo/popup_gallery_close_btn.png') no-repeat 0 0;
     }
 }
 
@@ -693,4 +354,5 @@ main {
         width:580px;
         margin: 0 auto;
     }
+}
 }

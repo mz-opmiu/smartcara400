@@ -9,7 +9,10 @@ var tabBtns = html.querySelectorAll('.reservation__tab-btn'),
 var popupArea = html.querySelector('.reservation-popup'),
     popupCont = popupArea.querySelector('.popup__inner'),
     popupColorBtns = popupArea.querySelectorAll('.popup__color'),
-    popupCloseBtn = popupArea.querySelector('.popup__close-btn');
+    popupCloseBtn = popupArea.querySelector('.popup__close-btn'),
+    successPopup = html.querySelector('.success-popup'),
+    successCompBtn = html.querySelector('.success-popup__comp-btn'),
+    successPopupCloseBtn = html.querySelector('.success-popup__close-btn');
 
 // product popup
 var productViewitems = document.querySelectorAll('.product__view-item-img'),
@@ -20,13 +23,14 @@ var productViewitems = document.querySelectorAll('.product__view-item-img'),
 
 
 // form 
-var popupForm = html.querySelector('.popup__form');
-    // nameInput = popupForm.querySelector('input[id=name]'),
-    // phoneInput = popupForm.querySelector('input[id=phone]');
+var popupForm = html.querySelector('.popup__form'),
+    nameElm = popupForm.name,
+    phoneElm = popupForm.phone,
+    smsCkBox = popupForm.sms,
+    persInfoCkBox = popupForm.personalInfo;
 
 
 var targetColor = 'beige'; // 초기 컬러 베이지로 초기화
-
 
 if (window.NodeList && !NodeList.prototype.forEach) {
     NodeList.prototype.forEach = Array.prototype.forEach;
@@ -35,7 +39,7 @@ if (window.NodeList && !NodeList.prototype.forEach) {
 
 function init() {
     // 사전예약 탭 메뉴
-    tabBtns.forEach((btn,idx) => {
+    tabBtns.forEach(function(btn,idx){
         btn.addEventListener('click',function (ev) {
 
             removeClassName();
@@ -43,10 +47,7 @@ function init() {
             tabContent[idx].classList.add('active');
             ev.target.classList.add('active');
 
-            console.log(ev.target);
-            
-
-            targetColorSetting ();
+            targetColorSetting();
         })
     });
 
@@ -55,22 +56,28 @@ function init() {
         popupArea.style.display = 'block';
         popupCont.style.top = `${html.scrollTop}px`;
 
-        // console.log('스크롤탑🐱‍🚀🐱‍🚀👍🏻',html.scrollTop);
         targetColorSetting ();
         submitReserv(); 
-
     });
 
-
+    // 사전예약 닫기 버튼
     popupCloseBtn.addEventListener('click',function (ev) {
-        popupArea.style.display = 'none';
+        closePopup()
+    });
+
+    // 팝업 닫기 버튼
+    successPopupCloseBtn.addEventListener('click',function (ev) {
+        successPopup.style.display = 'none'
+    })
+
+    // 팝업 확인(닫기) 버튼
+    successCompBtn.addEventListener('click',function (ev) {
+        successPopup.style.display = 'none'
     })
 
     // 제품 팝업 이벤트
-    productViewitems.forEach((item,index) => {
+    productViewitems.forEach(function(item,index){
         item.addEventListener('click', function (ev) {
-
-            console.log(ev.target);
             removeGalleryCn();
             popupGalleryArea.classList.add('active');
             popupImgItems[index].classList.add('active');
@@ -86,7 +93,6 @@ function init() {
 
 
     // 제품 부분 사전 예약 버튼
-    // 컬러 버튼은 베이지로 하기..
     prodReservBtn.addEventListener('click',function (ev) {
         popupArea.style.display = 'block';
         popupCont.style.top = `${html.scrollTop}px`;
@@ -96,51 +102,81 @@ function init() {
         submitReserv();
     });
 
-    //// 🐙 팝업 닫았을 경우 모든 인풋정보 리셋
-    /*
-        1. 제출 양식 다 입력되었는지. -> 📌 이름, 휴대폰번호, 체크박스 체크 여부
-            만약 안되어있다면 에러처리!
-
-        2. js 로 api처리해보기
-        3. 성공하면 successpopup
-    */
     // 팝업 폼 제출 
     popupForm.addEventListener('submit', function(ev) {
         ev.preventDefault();
-        var nameValue = popupForm.name.value;
-        var phoneValue = popupForm.phone.value;
         var colorSelList = popupForm.colorSelect;
-        var smsCkBox = popupForm.sms.checked;
-        var persInfoCkBox = popupForm.personalInfo.checked;
-        var valid = nameValue && phoneValue && smsCkBox && persInfoCkBox;
+        var colorName;
 
-        if( valid ) {
-            console.log('제출');
-
-
-            colorSelList.forEach(btn => {
-                // console.log();
+        
+            // 선택된 컬러값 가져오기
+            colorSelList.forEach(function(btn) {
                 if ( btn.checked ) {
-                    console.log('체크된 버튼!!!🎁',btn.id);
-                }
-            })
+                    colorName = btn.id
+                };
+            });
 
-        } else {
-            console.log('입력이 안되어있습니다!');
-            // 에러 표시 이벤트
-        }
+
+            fetchApi({
+                agree:smsCkBox.checked,
+                agree2: persInfoCkBox.checked,
+                color:colorName,
+                name: nameElm.value,
+                phoneNo:phoneElm.value
+            });
+
     })
 
 }
 
-// top: 2648px;
+// 팝업 닫았을때 전체 input값 리셋
+function closePopup() {
+    // 팝업 닫기
+    popupArea.style.opacity = '0';
+    setTimeout(function() {
+        popupArea.style.display = 'none';
+    }, 500);
 
+    // input reset
+    smsCkBox.checked  = false
+    persInfoCkBox.checked = false
+    nameElm.value = ''
+    phoneElm.value = ''
+}
+
+
+async function fetchApi(body) {
+    var url = `http://localhost:8080/api/reservation2021`
+    var options = {
+        method : 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },  
+        body:JSON.stringify(body),
+        
+    }
+
+
+    var res = await fetch(url,options)
+    var data = await res.json();
+
+    if(res.ok) {
+        closePopup();
+        setTimeout(function(){
+            successPopup.style.display = 'block'
+        }, 500);
+        
+
+        return data
+    }else {
+        alert(data.error)
+    }
+}
 
 // 사전예약폼에 있는 컬러 버튼
 function submitReserv() {
-    console.log('사전예약폼에 있는 컬러 버튼',targetColor);
 
-    popupColorBtns.forEach( btn => {
+    popupColorBtns.forEach( function(btn){
         if( btn.classList.contains(targetColor) ) {
             var targetInput = btn.querySelector('input');
             targetInput.checked = true;
@@ -151,12 +187,9 @@ function submitReserv() {
 
 // 선택된 색상 셋팅해주는 함수
 function targetColorSetting() {
-    tabBtns.forEach(btn => {
+    tabBtns.forEach(function(btn) {
         if(btn.classList.contains('active')) {
             targetColor = btn.querySelector('button').className;
-            console.log(targetColor);
-
-            
         }
     })
 }
@@ -165,7 +198,7 @@ function targetColorSetting() {
 
 // 전체 클래스명 지우기
 function removeClassName() {
-    tabBtns.forEach((item,idx) => {
+    tabBtns.forEach(function(item,idx){
         item.classList.remove('active');
         tabContent[idx].classList.remove('active')
     });
@@ -173,7 +206,7 @@ function removeClassName() {
 
 // 팝업 아이템 전체 클래스명 지우기
 function removeGalleryCn() {
-    popupImgItems.forEach(item => {
+    popupImgItems.forEach(function(item) {
         item.classList.remove('active')
     })
 }

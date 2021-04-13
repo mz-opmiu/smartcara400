@@ -1,20 +1,20 @@
 @mixin colorActive($colorName) {
     @if $colorName == 'beige' {
-        background-image: url(../img/mo/mo_tab_beige_on.png);
+        background-image: url($imgSrc + 'mo/mo_tab_beige_on.png');
     } @else if $colorName == 'green' {
-        background-image: url(../img/mo/mo_tab_green_on.png);
+        background-image: url($imgSrc + 'mo/mo_tab_green_on.png');
     } @else if $colorName == 'pink' {
-        background-image: url(../img/mo/mo_tab_pink_on.png);
+        background-image: url($imgSrc + 'mo/mo_tab_pink_on.png');
     } 
 }
 
 
 @mixin colorTabs($colorName) {
     @if $colorName == 'beige' {
-        background-image: url(../img/mo/mo_tab_beige_off.png);
+        background-image: url($imgSrc + 'mo/mo_tab_beige_off.png');
     } @else if $colorName == 'green' {
-        background-image: url(../img/mo/mo_tab_green_off.png);
+        background-image: url($imgSrc + 'mo/mo_tab_green_off.png');
     } @else if $colorName == 'pink' {
-        background-image: url(../img/mo/mo_tab_pink_off.png);
+        background-image: url($imgSrc + 'mo/mo_tab_pink_off.png');
     } 
 }
